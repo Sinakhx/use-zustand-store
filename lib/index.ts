@@ -15,7 +15,7 @@ const useZustandStoreCreator = <T extends object>(storeFactory: () => UseBoundSt
 };
 
 // typed curried store creator to avoid nesting
-export const createZustandStore =
+const createZustandStore =
     <T extends object>(storeFactory: StateCreator<T>) =>
     () =>
         create<T>()(storeFactory);
@@ -25,5 +25,8 @@ export const createZustandStore =
  * @param storeFactory a function that returns a zustand store
  * @returns a custom hook for handling application stores using Zustand
  */
-export const useZustandStore = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) =>
+const useZustandStore = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) =>
     useZustandStoreCreator(storeFactory)();
+
+export { createZustandStore, useZustandStore, createTrackedSelector };
+export default create;
