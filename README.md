@@ -1,24 +1,57 @@
-# **__LIB__NAME**
-<!-- ![npm](https://img.shields.io/npm/v/__LIB__NAME?color=%23b8860b&style=flat-square) -->
-<!-- ![license](https://img.shields.io/npm/l/__LIB__NAME?color=red&style=flat-square) -->
-<!-- ![tests](https://img.shields.io/badge/tests-100%25-green?style=flat-square) -->
-<!-- ![types](https://img.shields.io/npm/types/__LIB__NAME?style=flat-square) -->
+# **@sinakhx/useZustandStore**
+![npm](https://img.shields.io/npm/v/use-zustand-store?color=%23b8860b&style=flat-square)
+![license](https://img.shields.io/npm/l/use-zustand-store?color=red&style=flat-square)
+![types](https://img.shields.io/npm/types/use-zustand-store?style=flat-square)
 
-<!-- > 🚨🚨 This project is a work in progress! Issues and pull requests are encouraged. 🚨🚨 -->
+custom helpers for using [zustand](https://github.com/pmndrs/zustand) in react apps.
+it can be used for creating local (component scoped) stores using Zustand. So that:
+- you won't need to worry about garbage collecting your store on page components' unmount lifecycle.
+- you can get rid of using multiple selectors to acces different parts of the store (as it's using [react-tracked](https://github.com/dai-shi/react-tracked) under the hood)
+- you avoid making your codebase weired with currying, Providers, mind-boggling type annotations, etc.
 
-Personal template for building a TypeScript library.
+## Installation
+```bash
+npm install @sinakhx/use-zustand-store
+```
 
-- search for `__LIB__NAME` in the files to find the library name placeholder. replace it with your own lib name
-- replace `__LIB__DESCRIPTION` in the `package.json` file with your own lib description
-- replace `__LIB__KEYWORDS` in the `package.json` file with your own lib keywords
-- search for `Sina Khodabandehloo` in the files to find the default author name. replace it with your own name
-- search for `Sinakhx` & ``sinakhx`` in the files to find the default author handle. replace it with your own handle
-- replace `2022` in the license & readme files your own author year
-- you can also change the initial version number to your own version number in `package.json`
-- run `pnpm i` in the cli to install the dev dependencies
+## Usage
 
-Now you are ready to go!
+Creating a store is exactly the same way as creating a store in Zustand. You only need to change Zustand's `create` function with this library's `createZustandStore` function. Everything else is the same. (It's just a wrapper to avoid nesting due to currying)
 
+**Example counter app:**
+
+*counterStore.ts*
+```ts
+import { createZustandStore } from '@sinakhx/use-zustand-store'
+
+interface ICounterStore {
+    count: number
+    increment: () => void
+}
+
+export const counterStore = createZustandStore<ICounterStore>((set) => ({
+    count: 0,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+}))
+
+```
+
+*CounterComponent.tsx*
+```tsx
+import { useZustandStore } from '@sinakhx/use-zustand-store'
+import { counterStore } from './counterStore'
+
+const CounterComponent = () => {
+    const store = useZustandStore(counterStore)
+    return <button onClick={store.increment}>{store.count}</button>
+}
+
+export default CounterComponent
+```
+
+Now the store is bound to the component. By changing the page route (unmounting the component), the store gets garbage collected & by going back to the page (mounting the component again), a fresh store is created.
+
+That's done! Happy coding!
 <!--
 ____________________________________
 ### **Want More Examples?**
@@ -36,7 +69,7 @@ The [MIT License][license-url] (MIT)
 
 &copy; 2022 Sina Khodabandehloo
 
-[tests-url]: https://github.com/Sinakhx/__LIB__NAME/tree/main/__tests__/
-[contribution-url]:  https://github.com/Sinakhx/__LIB__NAME/blob/main/CONTRIBUTING.md
-[changelog-url]:  https://github.com/Sinakhx/__LIB__NAME/blob/main/CHANGELOG.md
-[license-url]:  https://github.com/Sinakhx/__LIB__NAME/blob/main/LICENSE
+[tests-url]: https://github.com/Sinakhx/use-zustand-store/tree/main/__tests__/
+[contribution-url]:  https://github.com/Sinakhx/use-zustand-store/blob/main/CONTRIBUTING.md
+[changelog-url]:  https://github.com/Sinakhx/use-zustand-store/blob/main/CHANGELOG.md
+[license-url]:  https://github.com/Sinakhx/use-zustand-store/blob/main/LICENSE

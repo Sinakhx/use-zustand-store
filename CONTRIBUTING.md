@@ -3,7 +3,7 @@
 Contributions are welcome!
 
 ### **Issues**
-In order to contribute, please open an issue on the [GitHub repository](https://github.com/Sinakhx/__LIB__NAME).
+In order to contribute, please open an issue on the [GitHub repository](https://github.com/Sinakhx/use-zustand-store).
 
 ### **Pull requests**
 In order to raise an eligible pull request, please consider the following:
