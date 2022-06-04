@@ -7,7 +7,7 @@ custom helpers for using [zustand](https://github.com/pmndrs/zustand) in react a
 it can be used for creating local (component scoped) stores using Zustand. So that:
 - you won't need to worry about garbage collecting your store on page components' unmount lifecycle.
 - you can get rid of using multiple selectors to acces different parts of the store (as it's using [react-tracked](https://github.com/dai-shi/react-tracked) under the hood)
-- you avoid making your codebase weired with currying, Providers, mind-boggling type annotations, etc.
+- you avoid making your codebase weird with currying, Providers, mind-boggling type annotations, etc.
 
 ## Installation
 ```bash
@@ -52,6 +52,46 @@ export default CounterComponent
 Now the store is bound to the component. By changing the page route (unmounting the component), the store gets garbage collected & by going back to the page (mounting the component again), a fresh store is created.
 
 That's done! Happy coding!
+
+<details>
+<summary style="font-weight:bold;">Still need global stores in other scenarios? no problem!</summary>
+
+In that case, you can create a global version of the `useZustandStore` hook by using the `createTrackedSelector` helper from [react-tracked](https://github.com/dai-shi/react-tracked)
+
+*counterStore.ts*
+```ts
+import { createZustandStore, createTrackedSelector } from '@sinakhx/use-zustand-store'
+
+interface ICounterStore {
+    count: number
+    increment: () => void
+}
+
+const counterStore = createZustandStore<ICounterStore>((set) => ({
+    count: 0,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+}))() // note the ending `()` here
+
+const useGlobalCounterStore = createTrackedSelector(counterStore)
+
+```
+
+*CounterComponent.tsx*
+```tsx
+// import { useZustandStore } from '@sinakhx/use-zustand-store'
+import { useGlobalCounterStore } from './counterStore'
+
+const CounterComponent = () => {
+    const store = useGlobalCounterStore()
+    return <button onClick={store.increment}>{store.count}</button>
+}
+
+export default CounterComponent
+```
+
+now the store is independent from the components & will keep its state regardless of the route changes.
+</details>
+
 <!--
 ____________________________________
 ### **Want More Examples?**
