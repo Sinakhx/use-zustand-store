@@ -1,0 +1,9 @@
+{
+    "lib/*.ts": [
+        "npm run lint:fix",
+        "npm run prettier"
+    ],
+    "__tests__/*.ts": [
+        "npm run prettier"
+    ]
+}
