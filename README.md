@@ -1,7 +1,7 @@
 # **@sinakhx/useZustandStore**
-![npm](https://img.shields.io/npm/v/use-zustand-store?color=%23b8860b&style=flat-square)
-![license](https://img.shields.io/npm/l/use-zustand-store?color=red&style=flat-square)
-![types](https://img.shields.io/npm/types/use-zustand-store?style=flat-square)
+![npm](https://img.shields.io/npm/v/@sinakhx/use-zustand-store?color=%23b8860b&style=flat-square)
+![license](https://img.shields.io/npm/l/@sinakhx/use-zustand-store?color=red&style=flat-square)
+![types](https://img.shields.io/npm/types/@sinakhx/use-zustand-store?style=flat-square)
 
 custom helpers for using [zustand](https://github.com/pmndrs/zustand) in react apps.
 it can be used for creating local (component scoped) stores using Zustand. So that:
