@@ -34,6 +34,7 @@
         "release:minor": "standard-version -- --release-as minor && npm run push && npm publish --access public",
         "release:notag": "standard-version -- --no-git-tag-version && npm run push && npm publish --access public",
         "release:patch": "standard-version -- --release-as patch && npm run push && npm publish --access public",
+        "release:alpha": "standard-version -- --prerelease alpha && npm run push && npm publish --access public",
         "test": "jest",
         "test:c": "jest --coverage",
         "test:w": "jest --watch --bail",

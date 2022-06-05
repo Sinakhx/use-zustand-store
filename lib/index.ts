@@ -28,5 +28,7 @@ const createZustandStore =
 const useZustandStore = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) =>
     useZustandStoreCreator(storeFactory)();
 
+export { combine, devtools, persist, redux, subscribeWithSelector } from 'zustand/middleware';
+export { default as shallow } from 'zustand/shallow';
 export { createZustandStore, useZustandStore, createTrackedSelector };
 export default create;
