@@ -54,6 +54,48 @@ Now the store is bound to the component. By changing the page route (unmounting 
 That's done! Happy coding!
 
 <details>
+<summary style="font-weight:bold;">Advanced usage: initializing store with props</summary>
+
+*counterStore.ts*
+```ts
+import { createZustandStore } from '@sinakhx/use-zustand-store'
+
+interface ICounterStore {
+    count: number
+    increment: () => void
+}
+
+interface ICounterProps {
+    initialCount: number
+}
+
+export const counterStoreFactory = ({ initialCount } : ICounterProps) => createZustandStore<ICounterStore>((set) => ({
+    count: initialCount,
+    increment: () => set((state) => ({ count: state.count + 1 })),
+}))
+
+```
+
+*CounterComponent.tsx*
+```tsx
+import { useZustandStore } from '@sinakhx/use-zustand-store'
+import { counterStoreFactory } from './counterStore'
+
+interface ICounterProps {
+    initialCount: number
+}
+
+const CounterComponent = ({ initialCount }: ICounterProps) => {
+    const store = useZustandStore(counterStoreFactory({ initialCount }))
+    return <button onClick={store.increment}>{store.count}</button>
+}
+
+export default CounterComponent
+```
+
+</details>
+
+<details>
 <summary style="font-weight:bold;">Still need global stores in other scenarios? no problem!</summary>
 
 In that case, you can create a global version of the `useZustandStore` hook by using the `createTrackedSelector` helper from [react-tracked](https://github.com/dai-shi/react-tracked)
@@ -70,9 +112,9 @@ interface ICounterStore {
 const counterStore = createZustandStore<ICounterStore>((set) => ({
     count: 0,
     increment: () => set((state) => ({ count: state.count + 1 })),
-}))() // note the ending `()` here
+}))
 
-const useGlobalCounterStore = createTrackedSelector(counterStore)
+export const useGlobalCounterStore = createTrackedSelector(counterStore())
 
 ```
 
