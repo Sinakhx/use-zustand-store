@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/Sinakhx/use-zustand-store/compare/v0.0.5...v0.1.0) (2022-06-05)
+
+
+### Bug Fixes
+
+* createZustandStore generic types ([67e27d2](https://github.com/Sinakhx/use-zustand-store/commit/67e27d2cee193bc89b982b1b36183a78d7d03d05))
+* re-export middlewares & shallow ([b6d7b84](https://github.com/Sinakhx/use-zustand-store/commit/b6d7b8436ab695206c3faa45c6cb6196c8ee7d8c))
+* re-export types & helpers from react-tracked ([6baed1d](https://github.com/Sinakhx/use-zustand-store/commit/6baed1dae336135a75ec44883c872a9dd37b6b78))
+
+
+### Documentation
+
+* add how to - store init with props ([ae89e3e](https://github.com/Sinakhx/use-zustand-store/commit/ae89e3eea6b9b882d1cfa50b6b4a0e5b09230353))
+
 ### [0.0.5](https://github.com/Sinakhx/use-zustand-store/compare/v0.0.4...v0.0.5) (2022-06-04)
 
 
