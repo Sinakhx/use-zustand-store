@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import create from 'zustand';
 import { useRef } from 'react';
 import { createTrackedSelector } from 'react-tracked';
-import type { StoreApi, UseBoundStore, StateCreator } from 'zustand';
+import type { StoreApi, UseBoundStore, StateCreator, State, StoreMutatorIdentifier } from 'zustand';
+
+type StoreFactory<T extends State> = () => UseBoundStore<StoreApi<T>>;
 
 // custom hook to create a zustand store which cleans up on component unmount
-const useZustandStoreCreator = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) => {
+const useZustandStoreCreator = <T extends State>(storeFactory: StoreFactory<T>) => {
     const ref = useRef<() => T>();
     if (!ref.current) {
         const useStore = storeFactory();
@@ -16,17 +19,23 @@ const useZustandStoreCreator = <T extends object>(storeFactory: () => UseBoundSt
 
 // typed curried store creator to avoid nesting
 const createZustandStore =
-    <T extends object>(storeFactory: StateCreator<T>) =>
+    <
+        T extends State,
+        Mis extends [StoreMutatorIdentifier, unknown][] = [],
+        Mos extends [StoreMutatorIdentifier, unknown][] = [],
+        U = T,
+    >(
+        storeFactory: StateCreator<T, Mis, Mos, U>,
+    ) =>
     () =>
-        create<T>()(storeFactory);
+        create<T, Mos>(storeFactory as any);
 
 /**
  * creates a component-scoped Zustand store which gets cleaned up when the component unmounts
  * @param storeFactory a function that returns a zustand store
  * @returns a custom hook for handling application stores using Zustand
  */
-const useZustandStore = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) =>
-    useZustandStoreCreator(storeFactory)();
+const useZustandStore = <T extends State>(storeFactory: StoreFactory<T>) => useZustandStoreCreator(storeFactory)();
 
 // exports
 export { createContainer, getUntrackedObject, memo } from 'react-tracked';

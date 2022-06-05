@@ -29,12 +29,13 @@
         "prepare": "husky install",
         "prettier": "prettier --write .",
         "push": "git push --follow-tags",
-        "release:first": "standard-version -- --first-release && npm run push",
-        "release:major": "standard-version -- --release-as major && npm run push && npm publish --access public",
-        "release:minor": "standard-version -- --release-as minor && npm run push && npm publish --access public",
-        "release:notag": "standard-version -- --no-git-tag-version && npm run push && npm publish --access public",
-        "release:patch": "standard-version -- --release-as patch && npm run push && npm publish --access public",
-        "release:alpha": "standard-version -- --prerelease alpha && npm run push && npm publish --access public",
+        "release": "standard-version",
+        "release:first": "npm run release -- --first-release && npm run push",
+        "release:major": "npm run release -- --release-as major && npm run push && npm publish --access public",
+        "release:minor": "npm run release -- --release-as minor && npm run push && npm publish --access public",
+        "release:notag": "npm run release -- --no-git-tag-version && npm run push && npm publish --access public",
+        "release:patch": "npm run release -- --release-as patch && npm run push && npm publish --access public",
+        "release:alpha": "npm run release -- --prerelease alpha && npm run push && npm publish --access public",
         "test": "jest",
         "test:c": "jest --coverage",
         "test:w": "jest --watch --bail",
@@ -42,7 +43,7 @@
         "exp": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm lib/index.ts"
     },
     "dependencies": {
-        "react": "^16.0.0 || ^17.0.0 || ^18.1.0",
+        "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
         "react-tracked": "^1.7.9",
         "zustand": "^4.0.0-rc.1"
     },
