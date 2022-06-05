@@ -28,9 +28,9 @@ const createZustandStore =
 const useZustandStore = <T extends object>(storeFactory: () => UseBoundStore<StoreApi<T>>) =>
     useZustandStoreCreator(storeFactory)();
 
+// exports
 export { createContainer, getUntrackedObject, memo } from 'react-tracked';
 export { combine, devtools, persist, redux, subscribeWithSelector } from 'zustand/middleware';
 export { default as shallow } from 'zustand/shallow';
-export default create;
-
 export { createZustandStore, useZustandStore, createTrackedSelector };
+export default create;
