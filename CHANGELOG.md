@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.2...v0.1.3) (2022-06-06)
+
+
+### Bug Fixes
+
+* rollback - immer ([478f92b](https://github.com/Sinakhx/use-zustand-store/commit/478f92b09542a89fdb5a2c133e5648f41dc951b5))
+
 ### [0.1.2](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.1...v0.1.2) (2022-06-06)
 
 
