@@ -1,6 +1,6 @@
 {
     "name": "@sinakhx/use-zustand-store",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "helpers for using zustand as a local store in react apps",
     "keywords": [
         "zustand",

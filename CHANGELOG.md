@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.0...v0.1.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* re-export immer middleware ([8b18a8f](https://github.com/Sinakhx/use-zustand-store/commit/8b18a8f3d0e71b23ab6d4ab9cba2c93553deae86))
+
 ## [0.1.0](https://github.com/Sinakhx/use-zustand-store/compare/v0.0.5...v0.1.0) (2022-06-05)
 
 
