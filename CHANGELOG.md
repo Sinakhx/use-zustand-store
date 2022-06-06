@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.1...v0.1.2) (2022-06-06)
+
+
+### Bug Fixes
+
+* change immer export to esm ([ac53cfe](https://github.com/Sinakhx/use-zustand-store/commit/ac53cfe52de5290872421171a61c8654eb3ac9f4))
+
 ### [0.1.1](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.0...v0.1.1) (2022-06-06)
 
 
