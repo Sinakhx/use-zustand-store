@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.3...v0.1.4) (2022-06-06)
+
+
+### Bug Fixes
+
+* middleware export ([e43207c](https://github.com/Sinakhx/use-zustand-store/commit/e43207c05af54be00945c8aeedfc4ea0af72e5b5))
+
 ### [0.1.3](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.2...v0.1.3) (2022-06-06)
 
 
