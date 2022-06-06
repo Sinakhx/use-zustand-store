@@ -40,7 +40,6 @@ const useZustandStore = <T extends State>(storeFactory: StoreFactory<T>) => useZ
 // exports
 export { createContainer, getUntrackedObject, memo } from 'react-tracked';
 export { combine, devtools, persist, redux, subscribeWithSelector } from 'zustand/esm/middleware';
-export { immer } from 'zustand/esm/middleware/immer';
 export { default as shallow } from 'zustand/shallow';
 export { createZustandStore, useZustandStore, createTrackedSelector };
 export default create;
