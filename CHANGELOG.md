@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.4...v0.2.0) (2022-06-09)
+
+
+### Features
+
+* produce function for store mutation using optics-ts ([9656226](https://github.com/Sinakhx/use-zustand-store/commit/96562264d2c69c619bc2491b88d562455b7c6bfe))
+
 ### [0.1.4](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.3...v0.1.4) (2022-06-06)
 
 
