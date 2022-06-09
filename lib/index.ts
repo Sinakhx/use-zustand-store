@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import create from 'zustand';
 import { useRef } from 'react';
+import * as O from 'optics-ts';
 import { createTrackedSelector } from 'react-tracked';
 import type { StoreApi, UseBoundStore, StateCreator, State, StoreMutatorIdentifier } from 'zustand';
 
@@ -37,9 +38,16 @@ const createZustandStore =
  */
 const useZustandStore = <T extends State>(storeFactory: StoreFactory<T>) => useZustandStoreCreator(storeFactory)();
 
+/**
+ * immutable store-mutator function to update the store
+ * @param target the target object to which the store will be attached
+ * @returns an immer-like store mutator function but with optics-ts
+ */
+const produce = <Store = Record<string, any>>(target: string) => O.modify(O.optic_<Store>().path(target));
+
 // exports
 export { createContainer, getUntrackedObject, memo } from 'react-tracked';
 export { combine, devtools, persist, redux, subscribeWithSelector } from 'zustand/middleware';
 export { default as shallow } from 'zustand/shallow';
-export { createZustandStore, useZustandStore, createTrackedSelector };
+export { createZustandStore, useZustandStore, createTrackedSelector, produce };
 export default create;

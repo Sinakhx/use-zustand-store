@@ -43,6 +43,7 @@
         "exp": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm lib/index.ts"
     },
     "dependencies": {
+        "optics-ts": "^2.3.0",
         "react": "^16.0.0 || ^17.0.0 || ^18.0.0",
         "react-tracked": "^1.7.9",
         "zustand": "^4.0.0-rc.1"

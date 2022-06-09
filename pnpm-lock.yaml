@@ -22,8 +22,9 @@ specifiers:
     husky: ^8.0.1
     jest: '*'
     lint-staged: ^13.0.0
+    optics-ts: ^2.3.0
     prettier: ^2.6.2
-    react: ^16.0.0 || ^17.0.0 || ^18.1.0
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-tracked: ^1.7.9
     scheduler: ^0.22.0
     standard-version: ^9.5.0
@@ -33,6 +34,7 @@ specifiers:
     zustand: ^4.0.0-rc.1
 
 dependencies:
+    optics-ts: 2.3.0
     react: 18.1.0
     react-tracked: 1.7.9_t4mhhwqmlclfj62qcnx76y3lqm
     zustand: 4.0.0-rc.1_react@18.1.0
@@ -5834,6 +5836,11 @@ packages:
         dependencies:
             mimic-fn: 4.0.0
         dev: true
+
+    /optics-ts/2.3.0:
+        resolution:
+            { integrity: sha512-iu6//uEMAKsowlq7hd8pNTc43KOjxMPW60BBA8DIt0q311iiOaWPilMHGOyCDvQ7llRutwlCkGX6e4HnUD0ARg== }
+        dev: false
 
     /optionator/0.8.3:
         resolution:
