@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/Sinakhx/use-zustand-store/compare/v0.2.0...v0.3.0) (2022-07-19)
+
+
+### Features
+
+* 'mutateStoreItem' helper ([b2f886b](https://github.com/Sinakhx/use-zustand-store/commit/b2f886b13da5dfd57c2c9bd08861a55855f93b88))
+
 ## [0.2.0](https://github.com/Sinakhx/use-zustand-store/compare/v0.1.4...v0.2.0) (2022-06-09)
 
 
