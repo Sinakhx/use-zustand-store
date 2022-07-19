@@ -45,9 +45,21 @@ const useZustandStore = <T extends State>(storeFactory: StoreFactory<T>) => useZ
  */
 const produce = <Store = Record<string, any>>(target: string) => O.modify(O.optic_<Store>().path(target));
 
+/**
+ * updates an store item/field by a single key-value object
+ * @param obj the object representing a new item in the store
+ * @returns the updated store
+ */
+const mutateStoreItem = (obj: Record<string, unknown>) => {
+    const key = Object.keys(obj)[0];
+    return produce(key)(() => obj[key]);
+};
+
+const Optics = O;
+
 // exports
 export { createContainer, getUntrackedObject, memo } from 'react-tracked';
 export { combine, devtools, persist, redux, subscribeWithSelector } from 'zustand/middleware';
 export { default as shallow } from 'zustand/shallow';
-export { createZustandStore, useZustandStore, createTrackedSelector, produce };
+export { createZustandStore, useZustandStore, createTrackedSelector, produce, mutateStoreItem, Optics };
 export default create;

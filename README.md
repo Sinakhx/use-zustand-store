@@ -22,7 +22,7 @@ Creating a store is exactly the same way as creating a store in Zustand. You onl
 
 *counterStore.ts*
 ```ts
-import { createZustandStore } from '@sinakhx/use-zustand-store'
+import { createZustandStore, mutateStoreItem } from '@sinakhx/use-zustand-store'
 
 interface ICounterStore {
     count: number
@@ -52,6 +52,46 @@ export default CounterComponent
 Now the store is bound to the component. By changing the page route (unmounting the component), the store gets garbage collected & by going back to the page (mounting the component again), a fresh store is created.
 
 That's done! Happy coding!
+
+<details>
+<summary style="font-weight:bold;">Simpler store mutations</summary>
+
+Instead of using Immer or nested destructuring to mutate the store, you can use the `mutateStoreItem` helper.
+
+The following example demonstrates how to reduce multiple `useState` hooks to a single store. 
+
+*tableStore.ts*
+```ts
+import { createZustandStore, mutateStoreItem } from '@sinakhx/use-zustand-store'
+
+type TableRow = {
+    id: number
+    name: string
+    age: number
+}
+
+interface ITableStore {
+    rows: Array<TableRow>
+    setRows: (rows: TableRow[]) => void
+    selectedRow: TableRow | null
+    setSelectedRow: (row: TableRow | null) => void
+    handleDeleteRow: (id: number) => void
+}
+
+const counterStore = createZustandStore<ITableStore>((set, get) => ({
+    rows: [],
+    setRows: (rows) => set(mutateStoreItem({ rows })),
+    selectedRow: null,
+    setSelectedRow: (row) => set(mutateStoreItem({ selectedRow: row })),
+    handleDeleteRow: (id) => {
+        const newRows = get().rows.filter((row) => row.id !== id)
+        get().setRows(newRows)
+    },
+}))
+```
+
+`mutateStoreItem` is using [optics-ts](https://github.com/akheron/optics-ts) to access the store's state. As a result one can also easily mutate a nested store item by providing its path as object key. e.g: `set(mutateStoreItem({ 'user.info.name': 'John' }))`.
+</details>
 
 <details>
 <summary style="font-weight:bold;">Advanced usage: initializing store with props</summary>
